@@ -23,12 +23,14 @@ public class Player : MonoBehaviour {
     private Vector3 midPoint;
     private Vector3 endPoint;
     private bool callOnce;
+    private Transform topDownCamera;
 
 	// Use this for initialization
 	void Awake () {
         S = this;
         state = action.start;
         currentBlock = IceHopping.S.getStart();
+        topDownCamera = GameObject.Find("Top Down Camera").transform;
 	}
 
     public void init()
@@ -50,6 +52,8 @@ public class Player : MonoBehaviour {
             state = action.end;
             Invoke("nextLevel", 0.7f);
         }
+
+        topDownCamera.position = new Vector3(this.transform.position.x, 5, this.transform.position.z);
 
         //check movement keys
         if(state == action.idle)
