@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour {
 
+    public string main_scene_name;
+
     public void gameStart()
     {
-        SceneManager.LoadScene("IceHopping");
+        SceneManager.LoadScene(main_scene_name);
     }
 
     public void gameQuit()
