@@ -52,16 +52,14 @@ public class BlockStack: MonoBehaviour{
 
     public void Update()
     {
-        if(blocks.Count == 0)
-        {
-            IceHopping.S.removeStack(this);
-        }
-
         if(moving)
         {
             float u = (Time.time - moveLife) / lowerSpeed;
             if(u > 1 && blocks.Count > 0)
             {
+                //set the value once u = 1
+                transform.localPosition = targetPos;
+
                 blocks.RemoveAt(0);
                 moving = false;
                 if(Player.S.state == action.waiting)
@@ -82,7 +80,7 @@ public class BlockStack: MonoBehaviour{
 
     public void lower()
     {
-        targetPos = new Vector3(transform.localPosition.x, transform.localPosition.y - 1.1f, transform.localPosition.z);
+        targetPos = new Vector3(transform.localPosition.x, transform.localPosition.y - 1f, transform.localPosition.z);
         moving = true;
         moveLife = Time.time;
     }
