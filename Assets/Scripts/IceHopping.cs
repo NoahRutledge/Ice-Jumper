@@ -44,18 +44,19 @@ public class IceHopping : MonoBehaviour {
 
         Level level = LevelInfo.S.getLevel(n);
         blockGrid = new BlockStack[level.size, level.size];
+        Debug.Log("Field is a " + level.size + "-" + level.size);
         for (int i = 0; i < level.size; i++)
         {
             for (int j = 0; j < level.size; j++)
             {
+                //create stack object and set parent
+                GameObject go = Instantiate<GameObject>(blockStackPrefab);
+                go.transform.parent = blockAnchor;
+                BlockStack bs = go.GetComponent<BlockStack>();
+                bs.transform.localPosition = new Vector3(i * 1.25f, 0, j * 1.25f);
+
                 if (level.field[i, j] > 0)
                 {
-                    //create stack object and set parent
-                    GameObject go = Instantiate<GameObject>(blockStackPrefab);
-                    go.transform.parent = blockAnchor;
-                    BlockStack bs = go.GetComponent<BlockStack>();
-                    bs.transform.localPosition = new Vector3(i * 1.25f, 0, j * 1.25f);
-
                     //check if start or end before adding blocks
                     if (i == level.start.x && Mathf.Sqrt(level.field.Length) - 1 - j == level.start.y)
                     {
@@ -67,11 +68,11 @@ public class IceHopping : MonoBehaviour {
                     }
                     //create ice blocks
                     bs.createBlocks(level.field[i, j]);
-
-                    //save
-                    blockStacks.Add(bs);
-                    blockGrid[i, j] = bs;
                 }
+
+                //save
+                blockStacks.Add(bs);
+                blockGrid[i, j] = bs;
             }
         }
 

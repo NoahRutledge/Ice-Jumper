@@ -273,7 +273,7 @@ MonoBehaviour:
     type: 2}
   playerPrefab: {fileID: 1918359416746356, guid: dac028ad49e6b3c438167e42724227f0,
     type: 2}
-  currentLevel: 1
+  currentLevel: 2
   blockAnchor: {fileID: 0}
   blockStacks: []
   loadTime: 2

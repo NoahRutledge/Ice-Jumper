@@ -115,7 +115,6 @@ MonoBehaviour:
   currentBlock: {fileID: 0}
   state: 0
   movementTime: 0.5
-  topDownCamera: {fileID: 0}
 --- !u!135 &135279731528183336
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -126,5 +125,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.006001876
+  m_Radius: 0.005501876
   m_Center: {x: -0.00029399758, y: -0.002, z: -4.656613e-10}
