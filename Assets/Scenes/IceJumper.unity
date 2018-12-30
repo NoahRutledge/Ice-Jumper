@@ -273,10 +273,11 @@ MonoBehaviour:
     type: 2}
   playerPrefab: {fileID: 1918359416746356, guid: dac028ad49e6b3c438167e42724227f0,
     type: 2}
-  currentLevel: 2
+  currentLevel: 1
   blockAnchor: {fileID: 0}
   blockStacks: []
   loadTime: 2
+  stackTotal: 0
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
