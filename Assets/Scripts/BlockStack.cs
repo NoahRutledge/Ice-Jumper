@@ -80,6 +80,7 @@ public class BlockStack: MonoBehaviour{
 
     public void lower()
     {
+        IceHopping.S.stackLower();
         targetPos = new Vector3(transform.localPosition.x, transform.localPosition.y - 1f, transform.localPosition.z);
         moving = true;
         moveLife = Time.time;

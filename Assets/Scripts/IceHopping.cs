@@ -16,6 +16,7 @@ public class IceHopping : MonoBehaviour {
     public List<BlockStack> blockStacks = new List<BlockStack>();
     public BlockStack[,] blockGrid;
     public float loadTime = 1f;
+    public int stackTotal = 0;
 
     private float loadLife;
     private Player player;
@@ -44,7 +45,6 @@ public class IceHopping : MonoBehaviour {
 
         Level level = LevelInfo.S.getLevel(n);
         blockGrid = new BlockStack[level.size, level.size];
-        Debug.Log("Field is a " + level.size + "-" + level.size);
         for (int i = 0; i < level.size; i++)
         {
             for (int j = 0; j < level.size; j++)
@@ -57,6 +57,7 @@ public class IceHopping : MonoBehaviour {
 
                 if (level.field[i, j] > 0)
                 {
+                    stackTotal += level.field[i, j];
                     //check if start or end before adding blocks
                     if (i == level.start.x && Mathf.Sqrt(level.field.Length) - 1 - j == level.start.y)
                     {
@@ -172,14 +173,14 @@ public class IceHopping : MonoBehaviour {
         return null;
     }
 
-    public void removeStack(BlockStack bs)
-    {
-        blockStacks.Remove(bs);
-    }
-
     public int stacksLeft()
     {
-        return blockStacks.Count;
+        return stackTotal;
+    }
+
+    public void stackLower()
+    {
+        stackTotal--;
     }
 
 	// Update is called once per frame
