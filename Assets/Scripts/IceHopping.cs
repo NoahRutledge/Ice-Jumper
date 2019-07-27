@@ -30,6 +30,7 @@ public class IceHopping : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        currentLevel = PlayerPrefs.GetInt("Level", 1);
         LevelInfo.INIT();
     }
 
@@ -42,6 +43,8 @@ public class IceHopping : MonoBehaviour {
     {
         blockAnchor = new GameObject("BlockAnchor").transform;
         blockAnchor.position = new Vector3(0, -15, 0);
+
+        stackTotal = 0;
 
         Level level = LevelInfo.S.getLevel(n);
         blockGrid = new BlockStack[level.size, level.size];
@@ -238,6 +241,7 @@ public class IceHopping : MonoBehaviour {
     {
         Debug.Log("Incrementing level");
         currentLevel++;
+        PlayerPrefs.SetInt("Level", currentLevel);
         Restart();
     }
 }

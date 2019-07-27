@@ -2,14 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StartMenu : MonoBehaviour {
 
-    public string main_scene_name;
+    public Animator animator;
+    public Button continueButton;
 
-    public void gameStart()
+    public void gameNew()
     {
-        SceneManager.LoadScene(main_scene_name);
+        Debug.Log("Ran game new");
+        PlayerPrefs.SetInt("Level", 1);
+        animator.SetTrigger("Level_Change");
+    }
+
+    public void gameContinue()
+    {
+        animator.SetTrigger("Level_Change");
     }
 
     public void gameQuit()
@@ -19,7 +28,19 @@ public class StartMenu : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-		
+    void Start () {
+        if(PlayerPrefs.GetInt("Level", -1) == -1)
+        {
+            continueButton.enabled = false;
+        }
+        Screen.SetResolution(600, 800, false);
 	}
+
+    private void Update()
+    {
+        if (PlayerPrefs.GetInt("Level", -1) != 1 || PlayerPrefs.GetInt("Level", -1) != -1)
+        {
+            continueButton.enabled = true;
+        }
+    }
 }

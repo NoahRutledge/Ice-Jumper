@@ -60,6 +60,13 @@ public class BlockStack: MonoBehaviour{
                 //set the value once u = 1
                 transform.localPosition = targetPos;
 
+                //if this is the end block and the last to be lowered then remove the texture from showing
+                if (isEnd && blocks.Count == 1)
+                {
+                    Debug.Log("Attempting to set not active");
+                    GetComponentInChildren<MeshCollider>().gameObject.SetActive(false);
+                }
+
                 blocks.RemoveAt(0);
                 moving = false;
                 if(Player.S.state == action.waiting)

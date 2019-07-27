@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: ee7667d869cb89541b61abe30a571d56
   - enabled: 1
-    path: Assets/Scenes/IceHopping.unity
+    path: Assets/Scenes/IceJumper.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}
