@@ -50,7 +50,6 @@ public class Player : MonoBehaviour {
     void Update () {
         if (currentBlock.isEnd && IceHopping.S.stacksLeft() == 1 && state == action.idle)
         {
-            Debug.Log("End reached");
             state = action.end;
             Invoke("nextLevel", 0.7f);
         }
@@ -63,7 +62,7 @@ public class Player : MonoBehaviour {
             GetComponent<Rigidbody>().isKinematic = false;
 
             //IF LEFT ARROW
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            if (Input.GetAxisRaw("Horizontal") == -1)
             {
                 //IF HOLDING SHIFT TO JUMP 2
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
@@ -92,7 +91,7 @@ public class Player : MonoBehaviour {
                 }
             }
             //IF RIGHT ARROW
-            else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            else if(Input.GetAxisRaw("Horizontal") == 1)
             {
                 //IF HOLDING SHIFT TO JUMP 2
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
@@ -122,7 +121,7 @@ public class Player : MonoBehaviour {
                 }
             }
             //IF DOWN ARROW
-            else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+            else if (Input.GetAxisRaw("Vertical") == -1)
             {
                 //IF HOLDING SHIFT TO JUMP 2
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
@@ -151,7 +150,7 @@ public class Player : MonoBehaviour {
                 }
             }
             //IF UP ARROW
-            else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+            else if (Input.GetAxisRaw("Vertical") == 1)
             {
                 //IF HOLDING SHIFT TO JUMP 2
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
@@ -299,7 +298,6 @@ public class Player : MonoBehaviour {
     {
         if (collision.gameObject.name == "Water")
         {
-            Debug.Log("Hit");
             state = action.end;
             Invoke("Restart", 0.7f);
         }
@@ -312,7 +310,6 @@ public class Player : MonoBehaviour {
 
     public void nextLevel()
     {
-        Debug.Log("Starting next level");
         IceHopping.S.nextLevel();
     }
     
